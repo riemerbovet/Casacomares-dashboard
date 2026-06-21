@@ -194,10 +194,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .data-table { table-layout: fixed; width: 100%; }
-  .data-table th, .data-table td { padding: 8px 6px; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .data-table th:first-child, .data-table td:first-child { width: 80px; }
-  .data-table .amount-col { width: 60px; font-size: 11px; }
+  .data-table th, .data-table td { padding: 8px 6px; font-size: 11px; white-space: normal; word-break: break-word; }
+  .data-table .amount-col { font-size: 11px; }
   .pct-track { display: none; }
   .chart-wrap { height: 180px; }
   .chart-wrap.tall { height: 220px; }
