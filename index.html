@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<!-- saved from url=(0061)file:///C:/Users/rieme/Downloads/CasaComares_Dashboard_2.html -->
-<html lang="nl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa Comares — Investering Dashboard</title>
-<script src="./Index_files/chart.umd.min.js.downloaden"></script>
-<link href="./Index_files/css2" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #F2EDE4;
@@ -477,102 +478,32 @@ textarea.code-block {
     </div>
   </div>
   <div class="header-right">
-    <span class="last-update" id="lastUpdate">Demo data — koppel je Google Sheet via Instellen</span>
+    <span class="last-update" id="lastUpdate">—</span>
     <button class="refresh-btn" onclick="loadData()">↻ Vernieuwen</button>
   </div>
 </div>
 
 <nav class="nav">
-  <button class="nav-tab active" onclick="showPage(&#39;overview&#39;, this)">Dashboard</button>
-  <button class="nav-tab" onclick="showPage(&#39;categories&#39;, this)">Categorieën</button>
-  <button class="nav-tab" onclick="showPage(&#39;timeline&#39;, this)">Tijdlijn</button>
-  <button class="nav-tab" onclick="showPage(&#39;transactions&#39;, this)">Transacties</button>
-  <button class="nav-tab" onclick="showPage(&#39;setup&#39;, this)">⚙ Instellen</button>
+  <button class="nav-tab active" onclick="showPage('overview', this)">Dashboard</button>
+  <button class="nav-tab" onclick="showPage('categories', this)">Categorieën</button>
+  <button class="nav-tab" onclick="showPage('timeline', this)">Tijdlijn</button>
+  <button class="nav-tab" onclick="showPage('transactions', this)">Transacties</button>
+  <button class="nav-tab" onclick="showPage('setup', this)">⚙ Instellen</button>
 </nav>
 
 <div class="main">
 
   <!-- OVERVIEW -->
   <div id="page-overview" class="page active">
-    <div id="kpi-section">
-    <div class="kpi-grid">
-      <div class="kpi-card primary">
-        <div class="kpi-label">Totale investering</div>
-        <div class="kpi-value">€ 53.944</div>
-        <div class="kpi-sub"><span class="status-dot"></span>Officieel — alleen betaalde kosten</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Aankoop woning</div>
-        <div class="kpi-value">€ 35.000</div>
-        <div class="kpi-sub">65% van totaal</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Renovatiekosten</div>
-        <div class="kpi-value">€ 18.944</div>
-        <div class="kpi-sub">35% van totaal</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Transacties</div>
-        <div class="kpi-value">48</div>
-        <div class="kpi-sub">11 categorieën · 19 leveranciers</div>
-      </div>
-    </div></div>
+    <div id="kpi-section"><div class="loading"><div class="spinner"></div> Laden...</div></div>
     <div class="grid-2">
       <div class="card">
         <div class="card-title">Verdeling per categorie</div>
-        <div class="chart-wrap"><canvas id="donutChart" width="518" height="240" style="display: block; box-sizing: border-box; height: 240px; width: 518px;"></canvas></div>
+        <div class="chart-wrap"><canvas id="donutChart"></canvas></div>
       </div>
       <div class="card">
         <div class="card-title">Categorieën <span class="badge">klik voor details</span></div>
-        <div id="breakdown-list">
-    <div class="breakdown-item" onclick="openModal(&#39;Aankoop&#39;)">
-      <div class="breakdown-dot" style="background:#C4704A"></div>
-      <div class="breakdown-name">Aankoop</div>
-      <div class="breakdown-pct">65%</div>
-      <div class="breakdown-amount">€ 35.000</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Grondwerk&#39;)">
-      <div class="breakdown-dot" style="background:#D4845E"></div>
-      <div class="breakdown-name">Grondwerk</div>
-      <div class="breakdown-pct">12%</div>
-      <div class="breakdown-amount">€ 6.250</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Terras &amp; Buitenruimte&#39;)">
-      <div class="breakdown-dot" style="background:#A05C3C"></div>
-      <div class="breakdown-name">Terras &amp; Buitenruimte</div>
-      <div class="breakdown-pct">6%</div>
-      <div class="breakdown-amount">€ 3.210</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Arbeid&#39;)">
-      <div class="breakdown-dot" style="background:#E09878"></div>
-      <div class="breakdown-name">Arbeid</div>
-      <div class="breakdown-pct">6%</div>
-      <div class="breakdown-amount">€ 3.000</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Keuken&#39;)">
-      <div class="breakdown-dot" style="background:#7A9E7E"></div>
-      <div class="breakdown-name">Keuken</div>
-      <div class="breakdown-pct">4%</div>
-      <div class="breakdown-amount">€ 2.282</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Kozijnen &amp; Ramen&#39;)">
-      <div class="breakdown-dot" style="background:#5C8A8A"></div>
-      <div class="breakdown-name">Kozijnen &amp; Ramen</div>
-      <div class="breakdown-pct">3%</div>
-      <div class="breakdown-amount">€ 1.416</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Bouwmaterialen&#39;)">
-      <div class="breakdown-dot" style="background:#9E7A5C"></div>
-      <div class="breakdown-name">Bouwmaterialen</div>
-      <div class="breakdown-pct">2%</div>
-      <div class="breakdown-amount">€ 890</div>
-    </div>
-    <div class="breakdown-item" onclick="openModal(&#39;Elektra&#39;)">
-      <div class="breakdown-dot" style="background:#C4A87A"></div>
-      <div class="breakdown-name">Elektra</div>
-      <div class="breakdown-pct">1%</div>
-      <div class="breakdown-amount">€ 668</div>
-    </div></div>
+        <div id="breakdown-list"></div>
       </div>
     </div>
   </div>
@@ -639,23 +570,23 @@ textarea.code-block {
       <div class="setup-title">⚡ Eenmalige setup</div>
       <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Koppel dit dashboard aan jouw Google Sheet. Daarna werkt alles automatisch.</p>
       <ol class="setup-steps">
-        <li><div class="step-num">1</div><div>Maak een Google Sheet aan op <a href="https://sheets.google.com/" target="_blank" style="color:var(--accent)">sheets.google.com</a> met tabblad <code>Transacties</code></div></li>
+        <li><div class="step-num">1</div><div>Maak een Google Sheet aan op <a href="https://sheets.google.com" target="_blank" style="color:var(--accent)">sheets.google.com</a> met tabblad <code>Transacties</code></div></li>
         <li><div class="step-num">2</div><div>Kolommen rij 1: <code>Datum</code> <code>Categorie</code> <code>Subcategorie</code> <code>Leverancier</code> <code>Ruimte</code> <code>Omschrijving</code> <code>Bedrag</code> <code>Notities</code></div></li>
         <li><div class="step-num">3</div><div>Ga naar <strong>Extensies → Apps Script</strong>, verwijder alles en plak de code hieronder</div></li>
         <li><div class="step-num">4</div><div><strong>Implementeren → Nieuwe implementatie → Webtoepassing</strong>. Toegang: <strong>Iedereen</strong>. Kopieer de URL.</div></li>
-        <li><div class="step-num">5</div><div>Plak de URL hieronder en klik <strong>Opslaan &amp; Verbinden</strong></div></li>
+        <li><div class="step-num">5</div><div>Plak de URL hieronder en klik <strong>Opslaan & Verbinden</strong></div></li>
       </ol>
     </div>
     <div class="card">
       <div class="card-title">Apps Script code</div>
-      <textarea class="code-block" id="appsScriptCode" rows="18" readonly=""></textarea>
+      <textarea class="code-block" id="appsScriptCode" rows="18" readonly></textarea>
       <button class="copy-btn" onclick="copyCode()">Kopieer code</button>
     </div>
     <div class="card">
       <div class="card-title">Jouw Google Sheet URL</div>
       <div style="display:flex;gap:8px;margin-top:4px;">
         <input class="search-input" type="text" id="sheetUrl" placeholder="Plak hier jouw Apps Script Web App URL..." style="flex:1;">
-        <button class="copy-btn" onclick="saveUrl()" style="white-space:nowrap;">Opslaan &amp; Verbinden</button>
+        <button class="copy-btn" onclick="saveUrl()" style="white-space:nowrap;">Opslaan & Verbinden</button>
       </div>
       <p style="font-size:12px;color:var(--muted);margin-top:8px;">Wordt lokaal opgeslagen in je browser.</p>
     </div>
@@ -668,7 +599,7 @@ textarea.code-block {
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="modal-title">—</div>
-      <button class="modal-close" onclick="document.getElementById(&#39;modal&#39;).classList.remove(&#39;open&#39;)">✕</button>
+      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     </div>
     <div class="modal-total" id="modal-total">—</div>
     <table class="data-table" id="modal-table">
@@ -1059,6 +990,5 @@ const savedUrl = localStorage.getItem('casacomares_url');
 if (savedUrl) document.getElementById('sheetUrl').value = savedUrl;
 loadData();
 </script>
-
-
-</body></html>
+</body>
+</html>
