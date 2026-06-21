@@ -656,7 +656,7 @@ function loadData() {
   fetch(url)
     .then(r => r.json())
     .then(data => {
-      allData = data.transactions || [];
+      allData = (data.transactions || []).map(r => { let b = r.bedrag; if (typeof b === "string") { b = b.replace(/[€\s]/g, "").replace(/\./g, "").replace(",", "."); } r.bedrag = parseFloat(b) || 0; return r; });
       document.getElementById('lastUpdate').textContent = 'Bijgewerkt ' + new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
       renderOverview();
     })
