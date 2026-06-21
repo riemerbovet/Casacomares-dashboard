@@ -194,6 +194,14 @@ body {
 }
 
 @media (max-width: 768px) {
+  .data-table th, .data-table td { padding: 8px 6px; font-size: 11px; }
+  .pct-track { display: none; }
+  .chart-wrap { height: 180px; }
+  .chart-wrap.tall { height: 220px; }
+  .kpi-value { font-size: 22px; }
+  .modal { padding: 16px; max-height: 90vh; }
+  .nav-tab { padding: 10px 12px; font-size: 12px; }
+  .hide-mobile { display: none; }
   .grid-2 { grid-template-columns: 1fr; }
   .main { padding: 16px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
@@ -518,7 +526,7 @@ textarea.code-block {
       <div style="padding:20px 22px 0;"><div class="card-title">Categorieoverzicht <span class="badge">klik voor transacties</span></div></div>
       <table class="data-table" id="cat-table">
         <thead><tr>
-          <th>Categorie</th><th>Transacties</th><th>Aandeel</th><th style="text-align:right">Totaal</th>
+          <th>Categorie</th><th>Transacties</th><th class="hide-mobile">Aandeel</th><th style="text-align:right">Totaal</th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -844,7 +852,7 @@ function renderCategories() {
       </td>
       <td>${countMap[c.name]||0}</td>
       <td>
-        <div class="pct-bar">
+        <div class="pct-bar hide-mobile">
           <div class="pct-track"><div class="pct-fill" style="width:${Math.round(c.total/grandTotal*100)}%"></div></div>
           <div class="pct-label">${Math.round(c.total/grandTotal*100)}%</div>
         </div>
