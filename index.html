@@ -194,7 +194,10 @@ body {
 }
 
 @media (max-width: 768px) {
-  .data-table th, .data-table td { padding: 8px 6px; font-size: 11px; }
+  .data-table { table-layout: fixed; width: 100%; }
+  .data-table th, .data-table td { padding: 8px 6px; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .data-table th:first-child, .data-table td:first-child { width: 80px; }
+  .data-table .amount-col { width: 60px; font-size: 11px; }
   .pct-track { display: none; }
   .chart-wrap { height: 180px; }
   .chart-wrap.tall { height: 220px; }
@@ -202,6 +205,7 @@ body {
   .modal { padding: 16px; max-height: 90vh; }
   .nav-tab { padding: 10px 12px; font-size: 12px; }
   .hide-mobile { display: none; }
+  .card { padding: 14px; }
   .grid-2 { grid-template-columns: 1fr; }
   .main { padding: 16px; }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
