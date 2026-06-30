@@ -652,9 +652,15 @@ function fmt(n) {
 }
 
 function fmtDate(d) {
-  if (!d) return '—';
-  const dt = new Date(d);
-  if (isNaN(dt)) return d;
+  if (!d || d === '') return '—';
+  let dt;
+  if (typeof d === 'string' && /^\d{4}-\d{2}-\d{2}/.test(d)) {
+    const parts = d.split('-');
+    dt = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  } else {
+    dt = new Date(d);
+  }
+  if (isNaN(dt.getTime())) return String(d);
   return dt.toLocaleDateString('nl-NL', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
